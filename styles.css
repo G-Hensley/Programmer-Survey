@@ -1,0 +1,69 @@
+body {
+    background-color: rgb(10, 10, 20);
+    color: rgb(0, 180, 120);
+    font-family: monospace;
+    font-size: 1.25rem;
+    margin: 1rem 10% 1rem 10%;
+  }
+  
+  #title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-align: center;
+  }
+  
+  #description {
+    font-size: 1.4rem;
+    font-weight: 750;
+    text-align: center;
+  }
+  
+  #name-label, #email-label, #number-label, #dropdown-label, #fields-label, #radio-label #comment-label {
+    font-weight: 650;
+  }
+  
+  #name, #name-label, #email, #email-label, #number, #number-label, #dropdown-label, #dropdown, #comment, #comment-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  
+  #name, #email, #number, #dropdown, #comment {
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .fieldset {
+    align-items: flex-start;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0;
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
+  
+  .fieldset-label {
+    margin-bottom: 0.5rem;
+  }
+  
+  #button-div {
+    display:flex;
+    justify-content: center;
+    position:relative;
+    width: 100%;
+  }
+  
+  #submit {
+    background-color: transparent;
+    border: 3px solid white;
+    border-radius: 5px;
+    color: rgb(0, 180, 120);
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom:1.5rem;
+    padding: 0.3rem;
+    position: relative;
+  }
