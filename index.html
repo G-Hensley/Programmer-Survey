@@ -3,48 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Programming Survey</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 id="title">Programming Survey</h1>
-    <p id="description">A survey to understand other programmers intrests</p>
-    <form id="survey-form" action="survey">
+    <main>
+        <h1 id="page-title">Programming Survey</h1>
+        <h2  aria-describedby="survey-form" id="subtitle">A survey to understand other programmers' intrests</h2>
+        <form id="survey-form" action="survey">
 
-        <label id="name-label" for="name">Name</label><input required type="text" id="name" placeholder="Enter your name">
-        <label id="email-label" for="email">Email</label><input required type="email" id="email" placeholder="Enter your email">
-        <label for="number" id="number-label">Age</label><input type="number" id="number" placeholder="Age" min="1" max="120">
+            <label class="input-label" id="name-label" for="name">Name</label><input aria-required="true" class="input-entry" required type="text" id="name" placeholder="Enter your name">
+            <label class="input-label" id="email-label" for="email">Email</label><input aria-required="true" class="input-entry" required type="email" id="email" placeholder="Enter your email">
+            <label class="input-label" for="number" id="age-label">Age</label><input
+             class="input-entry" title="Plase enter your age" type="number" id="number" placeholder="Age" min="1" max="120">
 
-        <label for="dropdown" id="dropdown-label">Do you program for a job, hobby, or both?</label>
-        <select name="dropdown" id="dropdown">
-            <option value="job">Job</option>
-            <option value="hobby">Hobby</option>
-            <option value="both">Both</option>
-        </select>
+            <label class="input-label" for="dropdown" id="dropdown-label">Do you program for a job, hobby, or both?</label>
+            <select class="input-entry" name="dropdown" id="dropdown">
+                <option value="job">Job</option>
+                <option value="hobby">Hobby</option>
+                <option value="both">Both</option>
+            </select>
 
-        <fieldset class="fieldset" id="radio-fieldset">
-            <legend class="fieldset-label" id="radio-label">What's your favorite programming language?</legend>
-            <label for="python"><input value="python" id="python" type="radio" name="fav-language"> Python</label>
-            <label for="java"><input value="java" id="java" type="radio" name="fav-language"> Java</label>
-        </fieldset>
+            <fieldset class="fieldset" id="radio-fieldset">
+                <legend class="input-label fieldset-label" id="radio-label">What's your favorite programming language?</legend>
+                <div class="choice-container">
+                    <label for="python"><input value="python" id="python" type="radio" name="fav-language"> Python</label>
+                    <label for="java"><input value="java" id="java" type="radio" name="fav-language"> Java</label>
+                    <label for="javascript"><input value="javascript" id="javascript" type="radio" name="fav-language"> JavaScript</label>
+                    <label for="golang"><input value="golang" id="golang" type="radio" name="fav-language"> Golang</label>
+                    <label for="php"><input value="php" id="php" type="radio" name="fav-language"> PHP</label>
+                </div>
+            </fieldset>
 
-        <fieldset class="fieldset" id="programming-fields">
-            <legend class="fieldset-label" id="fields-label"> What is your favorite programming field?</legend>
-            <label for="games"><input id="games" name="games" value="games" type="checkbox" checked> Games </label>
-            <label for="mobile"><input id="mobile" name="mobile" value="mobile" type="checkbox"> Mobile </label>
-            <label for="web"><input id="web" name="web" value="web" type="checkbox"> Web </label>
-            <label for="apps"><input id="apps" name="apps" value="apps" type="checkbox"> Apps </label>
-            <label for="devops"><input id="devops" name="devops" value="devops" type="checkbox"> Devops </label>
-        </fieldset>
+            <fieldset class="fieldset" id="programming-fields">
+                <legend class="input-label fieldset-label" id="fields-label"> What is your favorite programming field?</legend>
+                <div class="choice-container">
+                    <label for="games"><input id="games" name="games" value="games" type="checkbox" checked> Games </label>
+                    <label for="mobile"><input id="mobile" name="mobile" value="mobile" type="checkbox"> Mobile </label>
+                    <label for="web"><input id="web" name="web" value="web" type="checkbox"> Web </label>
+                    <label for="apps"><input id="apps" name="apps" value="apps" type="checkbox"> Apps </label>
+                    <label for="devops"><input id="devops" name="devops" value="devops" type="checkbox"> Devops </label>
+                </div>
+            </fieldset>
 
-    <label id="comment-label">What was your favorite programming project?</label>
-    <textarea id="comment" placeholder="My favorite project was...">
-    </textarea>
+            <label class="input-label" id="comment-label" for="comment">What was your favorite programming project?</label>
+            <textarea class="input-entry" name="comment" rows="4" id="comment" placeholder="My favorite project was..."></textarea>
 
-    <div id="button-div">
-        <button id="submit" type="submit">Submit</button>
-    </div>
+            <div id="button-div">
+                <button aria-label="Submit the survey form" id="submit" type="submit">Submit</button>
+            </div>
 
-    </form>
+            <p id="copyright">&copy 2024 Designed and built by Gavin Hensley</p>
+
+        </form>
+    </main>
+
+    <script>
+        document.getElementById("survey-form").addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent the default form submission (if it's not necessary to submit data to the server).
+            this.reset();  // Reset the form fields to their initial state.
+            alert("Form submitted and reset!");  // Optional: You can provide feedback to the user.
+        });
+    </script>
+    
 </body>
 </html>

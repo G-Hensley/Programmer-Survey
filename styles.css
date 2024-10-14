@@ -1,69 +1,204 @@
+/* -- CSS Variables for Colors, Fonts, and Other Common Values -- */
+:root {
+  --primary-bg-color: rgb(10, 10, 20); /* General background color */
+  --secondary-bg-color: rgb(10, 10, 40); /* Main section background */
+  --highlight-color: rgb(0, 180, 120); /* Border, button highlights */
+  --button-gradient-color-1: rgb(0, 210, 120); /* Gradient colors for buttons */
+  --button-gradient-color-2: rgb(0, 100, 120);
+  --button-gradient-color-3: rgb(0, 160, 120);
+  --text-color: #ffffff; /* General text color */
+  --font-family: 'Courier New', Courier, monospace; /* Default font family */
+  --font-size-base: 1.25rem; /* Base font size */
+  --border-radius: 10px; /* Common border radius for elements */
+  --box-shadow: 0 2px 10px var(--highlight-color); /* Shadow for main */
+}
+
+/* -- Custom Property for Animating the Button Background -- */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* -- Global Body Styles -- */
 body {
-    background-color: rgb(10, 10, 20);
-    color: rgb(0, 180, 120);
-    font-family: monospace;
-    font-size: 1.25rem;
-    margin: 1rem 10% 1rem 10%;
+  background-color: var(--primary-bg-color);
+  color: var(--highlight-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  margin: 1rem 10%;
+}
+
+/* -- Main Section Styling -- */
+main {
+  background-color: var(--secondary-bg-color);
+  border: 3px solid var(--highlight-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 60vw;
+}
+
+/* -- Page Title and Subtitle -- */
+#page-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+#subtitle {
+  font-size: 1.4rem;
+  font-weight: 750;
+  text-align: center;
+}
+
+/* -- Form Container -- */
+#survey-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 90%;
+}
+
+/* -- Labels and Form Fields -- */
+.input-label {
+  border-radius: 5px;
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.5rem 0;
+  text-align: left;
+  width: 50%;
+}
+
+.input-entry {
+  width: 50%;
+}
+
+/* Center-align the dropdown label */
+#dropdown-label {
+  text-align: center;
+  width: fit-content;
+}
+
+/* -- Fieldset and Legend Styling -- */
+.fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  width: fit-content;
+}
+
+.fieldset-label {
+  margin: auto;
+  margin-top: 1.5rem;
+  text-align: center;
+  width: max-content;
+}
+
+/* -- Choice Container for Radio Buttons and Checkboxes -- */
+.choice-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: fit-content;
+}
+
+/* Center-align comment label */
+#comment-label {
+  margin: auto;
+  margin: 1rem 0;
+  text-align: center;
+  width: fit-content;
+}
+
+/* -- Button Styles and Animations -- */
+#button-div {
+  animation: rotate-bg 3s linear infinite;
+  border-radius: var(--border-radius);
+  display: flex;
+  padding: 0;
+  position: relative;
+  margin: 1.5rem;
+}
+
+/* Rotating gradient for button background */
+#button-div::before, #button-div::after {
+  animation: rotate-bg 3s linear infinite;
+  background-image: conic-gradient(from var(--angle), var(--highlight-color), var(--button-gradient-color-1), var(--button-gradient-color-2), var(--button-gradient-color-3));
+  border-radius: 8px;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#button-div::before {
+  filter: blur(5px);
+}
+
+/* Keyframe animation for rotating background */
+@keyframes rotate-bg {
+  from {
+      --angle: 0deg;
   }
-  
-  #title {
-    font-size: 2.2rem;
-    font-weight: 900;
-    text-align: center;
+  to {
+      --angle: 360deg;
   }
-  
-  #description {
-    font-size: 1.4rem;
-    font-weight: 750;
-    text-align: center;
+}
+
+/* Submit Button */
+#submit {
+  background-color: var(--secondary-bg-color);
+  border: none;
+  border-radius: 5px;
+  color: var(--text-color);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.1rem;
+  margin: 0.2rem;
+  padding: 0.1rem 0.8rem;
+  position: relative;
+  width: fit-content;
+  z-index: 1;
+}
+
+/* -- Copyright Section -- */
+#copyright {
+  font-size: 1rem;
+}
+
+/* -- Media Queries for Responsiveness -- */
+@media screen and (max-width: 1600px) {
+  #survey-form {
+      width: 100%;
   }
-  
-  #name-label, #email-label, #number-label, #dropdown-label, #fields-label, #radio-label #comment-label {
-    font-weight: 650;
+}
+
+@media screen and (max-width: 1200px) {
+  main {
+      width: 70vw;
   }
-  
-  #name, #name-label, #email, #email-label, #number, #number-label, #dropdown-label, #dropdown, #comment, #comment-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    width: 100%;
+
+  .input-label, .input-entry {
+      width: 60%;
   }
-  
-  #name, #email, #number, #dropdown, #comment {
-    border-radius: 5px;
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+      padding: 0;
+      margin: 0;
   }
-  
-  .fieldset {
-    align-items: flex-start;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin: 0;
-    margin-bottom: 1.5rem;
-    padding: 0;
+
+  main {
+      border: 0;
+      border-radius: 0;
+      box-shadow: inset 0 1px 20px -5px var(--highlight-color);
+      margin: auto;
+      width: fit-content;
   }
-  
-  .fieldset-label {
-    margin-bottom: 0.5rem;
-  }
-  
-  #button-div {
-    display:flex;
-    justify-content: center;
-    position:relative;
-    width: 100%;
-  }
-  
-  #submit {
-    background-color: transparent;
-    border: 3px solid white;
-    border-radius: 5px;
-    color: rgb(0, 180, 120);
-    font-size: 1.2rem;
-    font-weight: 800;
-    margin-bottom:1.5rem;
-    padding: 0.3rem;
-    position: relative;
-  }
+}
